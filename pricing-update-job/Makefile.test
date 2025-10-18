@@ -1,0 +1,3 @@
+test-log:
+@echo "Testing log function"
+@echo "[$(shell date -u +%Y-%m-%dT%H:%M:%SZ)] Creating BigQuery tables if they don't exist"

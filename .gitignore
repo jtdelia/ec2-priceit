@@ -1,0 +1,38 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments and uv state
+.venv/
+.uv/
+
+# Build artifacts
+build/
+dist/
+*.egg-info/
+
+# Tool caches
+.mypy_cache/
+.pytest_cache/
+.ruff_cache/
+.coverage
+coverage.xml
+
+# IDE configuration
+.vscode/
+.idea/
+
+# Environment files
+.env
+.env.local
+.env
+*.env
+
+# macOS metadata
+.DS_Store
+
+old_files/
+
+.gemini
+

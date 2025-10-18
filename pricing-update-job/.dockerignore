@@ -1,0 +1,33 @@
+# Git files
+.git
+.gitignore
+
+# Environment files
+.env
+
+# Documentation
+README.md
+*.md
+
+# IDE files
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs and temporary files
+*.log
+*.tmp
+*.swp
+
+# Test files (if any)
+tests/
+test_*.py
+
+# Development dependencies (if separated)
+requirements-dev.txt
+
+# Makefile (not needed in container)
+Makefile

@@ -1,0 +1,1 @@
+"""Test suite for AWS EC2 Pricing API Backend"""

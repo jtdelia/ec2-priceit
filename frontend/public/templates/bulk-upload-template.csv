@@ -1,0 +1,2 @@
+region_code,instance_type,operation,operating_system,product_tenancy,qty
+us-east-1,m5.large,RunInstances:0002,Linux,Shared,1

@@ -1,0 +1,10 @@
+[project]
+name = "pricing-update-job"
+version = "0.1.0"
+dependencies = [
+    "requests",
+    "google-cloud-bigquery",
+    "google-cloud-storage",
+    "pytest",
+    "pytest-mock"
+]

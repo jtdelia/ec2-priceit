@@ -1,0 +1,30 @@
+[project]
+name = "api-backend"
+version = "0.1.0"
+description = "AWS EC2 Pricing API Backend"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi",
+    "uvicorn[standard]",
+    "pydantic",
+    "google-cloud-bigquery",
+    "google-cloud-logging",
+    "python-dotenv",
+    "google-api-python-client",
+    "google-auth-oauthlib"
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0.0",
+    "pytest-asyncio>=0.23.0",
+    "pytest-cov>=4.1.0",
+    "httpx>=0.26.0",
+    "pytest-mock>=3.12.0"
+]
+
+[dependency-groups]
+dev = [
+    "httpx>=0.28.1",
+    "pytest>=8.4.2",
+]
