@@ -6,6 +6,7 @@ steps:
       - |
         TAG=$(date -u +%Y%m%d-%H%M%S)
         docker build -t ${_ARTIFACT_REGISTRY_URL}/pricing-update-job:latest -t ${_ARTIFACT_REGISTRY_URL}/pricing-update-job:$TAG .
+    dir: 'pricing-update-job'
 
 options:
   logging: CLOUD_LOGGING_ONLY
