@@ -1,11 +1,12 @@
 steps:
   - name: 'gcr.io/cloud-builders/docker'
-    entrypoint: 'bash'
     args:
-      - '-c'
-      - |
-        TAG=$(date -u +%Y%m%d-%H%M%S)
-        docker build -t ${_ARTIFACT_REGISTRY_URL}/pricing-update-job:latest -t ${_ARTIFACT_REGISTRY_URL}/pricing-update-job:$TAG .
+      - 'build'
+      - '-t'
+      - '${_ARTIFACT_REGISTRY_URL}/pricing-update-job:latest'
+      - '-t'
+      - '${_ARTIFACT_REGISTRY_URL}/pricing-update-job:$SHORT_SHA'
+      - '.'
     dir: 'pricing-update-job'
 
 options:
@@ -13,4 +14,4 @@ options:
 
 images:
   - '${_ARTIFACT_REGISTRY_URL}/pricing-update-job:latest'
-  - '${_ARTIFACT_REGISTRY_URL}/pricing-update-job:$(date -u +%Y%m%d-%H%M%S)'
+  - '${_ARTIFACT_REGISTRY_URL}/pricing-update-job:$SHORT_SHA'

@@ -1,11 +1,16 @@
 steps:
   - name: 'gcr.io/cloud-builders/docker'
-    entrypoint: 'bash'
     args:
-      - '-c'
-      - |
-        TAG=$(date -u +%Y%m%d-%H%M%S)
-        docker build --build-arg VITE_BACKEND_API_URL=${_VITE_BACKEND_API_URL} --build-arg VITE_GOOGLE_OAUTH_CLIENT_ID=${_VITE_GOOGLE_OAUTH_CLIENT_ID} -t ${_ARTIFACT_REGISTRY_URL}/frontend:latest -t ${_ARTIFACT_REGISTRY_URL}/frontend:$TAG .
+      - 'build'
+      - '--build-arg'
+      - 'VITE_BACKEND_API_URL=${_VITE_BACKEND_API_URL}'
+      - '--build-arg'
+      - 'VITE_GOOGLE_OAUTH_CLIENT_ID=${_VITE_GOOGLE_OAUTH_CLIENT_ID}'
+      - '-t'
+      - '${_ARTIFACT_REGISTRY_URL}/frontend:latest'
+      - '-t'
+      - '${_ARTIFACT_REGISTRY_URL}/frontend:$SHORT_SHA'
+      - '.'
     dir: 'frontend'
 
 options:
@@ -13,4 +18,4 @@ options:
 
 images:
   - '${_ARTIFACT_REGISTRY_URL}/frontend:latest'
-  - '${_ARTIFACT_REGISTRY_URL}/frontend:$(date -u +%Y%m%d-%H%M%S)'
+  - '${_ARTIFACT_REGISTRY_URL}/frontend:$SHORT_SHA'

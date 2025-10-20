@@ -1,16 +1,17 @@
 steps:
   - name: 'gcr.io/cloud-builders/docker'
-    entrypoint: 'bash'
     args:
-      - '-c'
-      - |
-        TAG=$(date -u +%Y%m%d-%H%M%S)
-        docker build -t ${_ARTIFACT_REGISTRY_URL}/api-backend:latest -t ${_ARTIFACT_REGISTRY_URL}/api-backend:$TAG .
-    dir: 'backend'
+      - 'build'
+      - '-t'
+      - '${_ARTIFACT_REGISTRY_URL}/api-backend:latest'
+      - '-t'
+      - '${_ARTIFACT_REGISTRY_URL}/api-backend:$SHORT_SHA'
+      - '.'
+    dir: 'api-backend'
 
 options:
   logging: CLOUD_LOGGING_ONLY
 
 images:
   - '${_ARTIFACT_REGISTRY_URL}/api-backend:latest'
-  - '${_ARTIFACT_REGISTRY_URL}/api-backend:$(date -u +%Y%m%d-%H%M%S)'
+  - '${_ARTIFACT_REGISTRY_URL}/api-backend:$SHORT_SHA'
