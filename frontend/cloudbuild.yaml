@@ -27,7 +27,7 @@ steps:
       - '--platform=managed'
       - '--allow-unauthenticated'
       - '--project=${_PROJECT_ID}'
-      - '--max-instances $(_MAX_INSTANCES)'
+      - '--max-instances=1'
 
 options:
   logging: CLOUD_LOGGING_ONLY
