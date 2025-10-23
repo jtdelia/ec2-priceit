@@ -7,26 +7,27 @@ steps:
       - '--build-arg'
       - 'VITE_GOOGLE_OAUTH_CLIENT_ID=${_VITE_GOOGLE_OAUTH_CLIENT_ID}'
       - '-t'
-      - '${_AR_HOSTNAME}.${_AR_PROJECT_ID}.${_AR_REPOSITORY}:latest'
+      - '${_AR_HOSTNAME}/${_AR_PROJECT_ID}/${_AR_REPOSITORY}:latest'
       - '-t'
-      - '${_AR_HOSTNAME}.${_AR_PROJECT_ID}.${_AR_REPOSITORY}:$SHORT_SHA'
+      - '${_AR_HOSTNAME}/${_AR_PROJECT_ID}/${_AR_REPOSITORY}:$SHORT_SHA'
       - '.'
     dir: 'frontend'
   - name: 'gcr.io/cloud-builders/docker'
     args:
       - 'push'
-      - '${_AR_HOSTNAME}.${_AR_PROJECT_ID}.${_AR_REPOSITORY}:$SHORT_SHA'
+      - '${_AR_HOSTNAME}/${_AR_PROJECT_ID}/${_AR_REPOSITORY}:$SHORT_SHA'
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
     entrypoint: 'gcloud'
     args:
       - 'run'
       - 'deploy'
       - '${_SERVICE_NAME}'
-      - '--image=${_AR_HOSTNAME}.${_AR_PROJECT_ID}.${_AR_REPOSITORY}:$SHORT_SHA'
+      - '--image=${_AR_HOSTNAME}/${_AR_PROJECT_ID}/${_AR_REPOSITORY}:$SHORT_SHA'
       - '--region=${_DEPLOY_REGION}'
       - '--platform=managed'
       - '--allow-unauthenticated'
       - '--project=${_PROJECT_ID}'
+      - '--max-instances $(_MAX_INSTANCES)'
 
 options:
   logging: CLOUD_LOGGING_ONLY
