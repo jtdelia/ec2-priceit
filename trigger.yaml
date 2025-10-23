@@ -1,0 +1,10 @@
+description: Build and deploy to Cloud Run service ec2-priceit-frontend on push to "^main$"
+filename: cloudbuild.yaml
+github:
+  name: aws-ec2-pricing
+  owner: jtdelia
+  push:
+    branch: ^main$
+includedFiles:
+- frontend/**
+name: rmgpgab-ec2-priceit-frontend-us-central1-jtdelia-aws-ec2-prihqm
